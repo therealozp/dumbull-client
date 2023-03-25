@@ -25,29 +25,41 @@ const AuthButton = ({ onClick, provider, providerLogoSrc }) => {
 		<Button
 			mode="contained-tonal"
 			icon={() => <Icon />}
-			style={{ height: 50, width: 300, margin: 16 }}
+			style={{
+				height: 50,
+				width: 300,
+				margin: 16,
+				display: 'flex',
+				flexDirection: 'row',
+				justifyContent: 'center',
+				alignItems: 'center',
+			}}
 		>
 			<Text>Sign in with {provider}</Text>
 		</Button>
 	);
 };
 
-const SignUpCard = () => {
-	return (
-		<Surface style={styles.signUpCard} mode="elevated">
-			<View>
-				<Text>Join us!</Text>
-				<AuthButton provider="Google" />
-				<AuthButton provider="Microsoft" />
-			</View>
-		</Surface>
-	);
-};
-
 const AuthScreen = () => {
 	return (
 		<View style={styles.container}>
-			<SignUpCard />
+			<Surface style={styles.signUpCard} mode="elevated">
+				<Text style={styles.mainText}>Join us!</Text>
+				<Surface
+					mode="elevated"
+					style={{
+						borderRadius: 8,
+						marginBottom: 40,
+					}}
+				>
+					<Image
+						source={require('../../assets/logo.png')}
+						style={styles.logo}
+					/>
+				</Surface>
+				<AuthButton provider="Google" />
+				<AuthButton provider="Microsoft" />
+			</Surface>
 		</View>
 	);
 };
@@ -64,7 +76,7 @@ const styles = StyleSheet.create({
 	signInButton: {
 		backgroundColor: '#136F63',
 		width: '80%',
-		height: 50,
+		height: 40,
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -77,5 +89,15 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		borderRadius: 8,
+	},
+	mainText: {
+		fontSize: 30,
+		fontFamily: 'NunitoSans_800ExtraBold',
+		marginBottom: 50,
+	},
+	logo: {
+		height: 100,
+		width: 100,
+		resizeMode: 'contain',
 	},
 });

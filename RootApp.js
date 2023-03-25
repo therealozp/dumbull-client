@@ -7,6 +7,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
 import CreateNewGroupScreen from './src/screens/CreateNewGroupScreen';
 import AuthScreen from './src/screens/AuthScreen';
+import MyGroupsScreen from './src/screens/MyGroupsScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -26,6 +27,8 @@ export default function RootApp() {
 							iconName = focused
 								? 'plus-box-multiple'
 								: 'plus-box-multiple-outline';
+						} else if (route.name === 'My Groups') {
+							iconName = focused ? 'card-bulleted' : 'card-bulleted-outline';
 						}
 
 						// You can return any component that you like here!
@@ -55,6 +58,7 @@ export default function RootApp() {
 					options={{ headerShown: false }}
 				/>
 				<Tab.Screen name="Test" component={AuthScreen} />
+				<Tab.Screen name="My Groups" component={MyGroupsScreen} />
 			</Tab.Navigator>
 		</NavigationContainer>
 	);
