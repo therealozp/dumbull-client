@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { View, Text, AppRegistry } from 'react-native';
 import React from 'react';
 import RootApp from './RootApp';
 import {
@@ -22,6 +22,7 @@ import {
 } from '@expo-google-fonts/quicksand';
 import { useFonts } from 'expo-font';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 const fontConfig = {
 	default: {
@@ -53,6 +54,11 @@ const theme = {
 	},
 };
 
+const client = new ApolloClient({
+	uri: 'http://localhost:4000/graphql',
+	cache: new InMemoryCache(),
+});
+
 const App = () => {
 	const [fontsLoaded] = useFonts({
 		NunitoSans_400Regular,
@@ -67,7 +73,7 @@ const App = () => {
 		Quicksand_700Bold,
 	});
 	return (
-		<>
+		<ApolloProvider client={client}>
 			{fontsLoaded ? (
 				<GestureHandlerRootView style={{ flex: 1 }}>
 					<PaperProvider theme={theme}>
@@ -79,7 +85,7 @@ const App = () => {
 					<Text>Loading...</Text>
 				</View>
 			)}
-		</>
+		</ApolloProvider>
 	);
 };
 

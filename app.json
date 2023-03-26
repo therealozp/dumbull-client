@@ -6,6 +6,7 @@
 		"orientation": "portrait",
 		"icon": "./assets/icon.png",
 		"userInterfaceStyle": "light",
+		"scheme": "com.dumbull.dumbull",
 		"splash": {
 			"image": "./assets/splash.png",
 			"resizeMode": "contain",
@@ -13,13 +14,15 @@
 		},
 		"assetBundlePatterns": ["**/*"],
 		"ios": {
-			"supportsTablet": true
+			"supportsTablet": true,
+			"bundleIdentifier": "com.dumbull.dumbull"
 		},
 		"android": {
 			"adaptiveIcon": {
 				"foregroundImage": "./assets/adaptive-icon.png",
 				"backgroundColor": "#ffffff"
-			}
+			},
+			"package": "com.dumbull.dumbull"
 		},
 		"web": {
 			"favicon": "./assets/favicon.png"
@@ -30,7 +33,13 @@
 				{
 					"photosPermission": "The app only access media to upload your user avatar."
 				}
-			]
-		]
+			],
+			"@react-native-google-signin/google-signin"
+		],
+		"extra": {
+			"eas": {
+				"projectId": "c83a6e1f-3586-45a8-a0f6-16c1ebe080f2"
+			}
+		}
 	}
 }

@@ -57,64 +57,56 @@ const SignUpScreen = () => {
 	);
 };
 
-const AuthButton = ({ onClick, provider, providerLogoSrc }) => {
+const AuthScreen = ({ promptAsync }) => {
 	const Icon = () => {
 		return (
-			<>
-				{provider == 'Google' ? (
-					<Image
-						source={require('../../assets/google.png')}
-						style={{ height: 20, width: 20, marginRight: 10 }}
-					/>
-				) : (
-					<Image
-						source={require('../../assets/microsoft.png')}
-						style={{ height: 20, width: 20, marginRight: 10 }}
-					/>
-				)}
-			</>
+			<Image
+				source={require('../../assets/google.png')}
+				style={{ height: 20, width: 20, marginRight: 10 }}
+			/>
 		);
 	};
-
-	return (
-		<Button
-			mode="contained-tonal"
-			icon={() => <Icon />}
-			style={{
-				height: 50,
-				width: 300,
-				margin: 16,
-				display: 'flex',
-				flexDirection: 'row',
-				justifyContent: 'center',
-				alignItems: 'center',
-			}}
-		>
-			<Text>Sign in with {provider}</Text>
-		</Button>
-	);
-};
-
-const AuthScreen = () => {
 	return (
 		<View style={styles.container}>
-			<Surface style={styles.signUpCard} mode="elevated">
-				<Text style={styles.mainText}>Join us!</Text>
-				<Surface
-					mode="elevated"
-					style={{
-						borderRadius: 8,
-						marginBottom: 40,
-					}}
-				>
-					<Image
-						source={require('../../assets/logo.png')}
-						style={styles.logo}
-					/>
+			<Image
+				source={{
+					uri: 'https://lh3.googleusercontent.com/p/AF1QipNJkqEVgey1qf8Z2H4xbIUn8TaPE33qc3-J3eTa=s1360-w1360-h1020',
+				}}
+				style={{ height: '100%', width: '100%', position: 'absolute' }}
+			/>
+			<View style={styles.generalContainer}>
+				<Surface style={styles.signUpCard} mode="elevated">
+					<Text style={styles.mainText}>Join us!</Text>
+					<Surface
+						mode="elevated"
+						style={{
+							borderRadius: 8,
+							marginBottom: 40,
+						}}
+					>
+						<Image
+							source={require('../../assets/logo.png')}
+							style={styles.logo}
+						/>
+					</Surface>
+					<Button
+						mode="contained"
+						icon={() => <Icon />}
+						style={{
+							height: 50,
+							width: 250,
+							margin: 10,
+							display: 'flex',
+							flexDirection: 'row',
+							justifyContent: 'center',
+							alignItems: 'center',
+						}}
+						onPress={promptAsync}
+					>
+						<Text>Sign in with Google</Text>
+					</Button>
 				</Surface>
-				<AuthButton provider="Google" />
-				<AuthButton provider="Microsoft" />
-			</Surface>
+			</View>
 		</View>
 	);
 };
@@ -127,6 +119,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#fdfdf5',
 		justifyContent: 'center',
 		alignItems: 'center',
+		position: 'relative',
 	},
 	signInButton: {
 		backgroundColor: '#136F63',
@@ -154,5 +147,16 @@ const styles = StyleSheet.create({
 		height: 100,
 		width: 100,
 		resizeMode: 'contain',
+	},
+	generalContainer: {
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		height: '100%',
+		width: '100%',
+		backgroundColor: 'rgba(27, 27, 27, 0.5)',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 });

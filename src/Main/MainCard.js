@@ -18,7 +18,9 @@ const MainCard = ({ studyClass, name, currentMembers, location, status }) => {
 			{fontsLoaded && (
 				<Surface style={styles.mainCard} mode="elevated">
 					<Image
-						source={require('./msc.jpg')}
+						source={{
+							uri: 'https://lh3.googleusercontent.com/p/AF1QipNJkqEVgey1qf8Z2H4xbIUn8TaPE33qc3-J3eTa=s1360-w1360-h1020',
+						}}
 						style={{ height: '100%', width: '100%', position: 'absolute' }}
 					/>
 					<View style={styles.generalContainer}>
