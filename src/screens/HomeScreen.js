@@ -6,66 +6,7 @@ import { IconButton } from 'react-native-paper';
 import BottomSheet from '@gorhom/bottom-sheet';
 import CustomOverlay from '../bottomSheets/CustomOverlay';
 import BottomSlide from '../bottomSheets/BottomSlide';
-
-const cardInfo = {
-	name: 'Mai Sakurajima',
-	studyClass: 'PHY 2048',
-	currentMembers: 3,
-	status: 'closed',
-	location: 'MSC 101',
-};
-
-const cards = [
-	{
-		name: 'Mai Sakurajima',
-		studyClass: 'PHY 2048',
-		currentMembers: 4,
-		status: 'closed',
-		location: 'MSC 101',
-		description: 'We are studying for the final exam',
-	},
-	// generate 10 cards of different values like this
-	{
-		name: 'Rui Tachibana',
-		studyClass: 'COP 2510',
-		currentMembers: 3,
-		status: 'open',
-		location: 'MSC 101',
-		description: 'We are studying for the midterms',
-	},
-	{
-		name: 'Rui Tachibana',
-		studyClass: 'COP 2510',
-		currentMembers: 3,
-		status: 'open',
-		location: 'MSC 101',
-		description: 'I need help with assignment 3',
-	},
-	{
-		name: 'Rui Tachibana',
-		studyClass: 'COP 2510',
-		currentMembers: 3,
-		status: 'open',
-		location: 'MSC 101',
-		description: "i guess i just miss her a lot. i don't know why.",
-	},
-	{
-		name: 'Rui Tachibana',
-		studyClass: 'COP 2510',
-		currentMembers: 3,
-		status: 'open',
-		location: 'MSC 101',
-		description: 'We are studying for the final exam',
-	},
-	{
-		name: 'Rui Tachibana',
-		studyClass: 'COP 2510',
-		currentMembers: 3,
-		status: 'open',
-		location: 'MSC 101',
-		description: 'please send help. i need her. i want her.',
-	},
-];
+import { cards } from '../dummy/cards';
 
 const HomeScreen = () => {
 	const [currentCardIndex, setCurrentCardIndex] = useState(0);

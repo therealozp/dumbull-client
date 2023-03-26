@@ -1,6 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import { Surface, Button } from 'react-native-paper';
+import { Surface, Button, TextInput, Chip } from 'react-native-paper';
+import { AutocompleteDropdown } from 'react-native-autocomplete-dropdown';
+
+const SignUpScreen = () => {
+	const [email, setEmail] = useState('');
+	const [name, setName] = useState('');
+	const [username, setUsername] = useState('');
+	const [tags, setTags] = useState([]);
+	const onTagsChange = (value) => {
+		setTags([...tags, value.name]);
+	};
+	return (
+		<View style={styles.container}>
+			<AutocompleteDropdown
+				clearOnFocus={false}
+				closeOnBlur={true}
+				closeOnSubmit={false}
+				initialValue={{ id: '2' }} // or just '2'
+				dataSet={[
+					{ id: 1, name: 'Business' },
+					{ id: 2, name: 'Global Sustainability' },
+					{ id: 3, name: 'Health' },
+					{ id: 4, name: 'Culture' },
+					{ id: 5, name: 'Natural Science' },
+					{ id: 6, name: 'Behavioral' },
+					{ id: 7, name: 'Civil Engineering' },
+					{ id: 8, name: 'Communication' },
+					{ id: 9, name: 'Technology' },
+					{ id: 10, name: 'Criminology' },
+					{ id: 11, name: 'Education' },
+					{ id: 12, name: 'Electrical & Mechanical Engineering' },
+				]}
+				onSelectItem={(item) => {
+					onTagsChange(item);
+				}}
+				renderItem={tags.map((tag, index) => {
+					return (
+						<Chip
+							mode="contained"
+							style={{
+								height: 35,
+								display: 'flex',
+								justifyContent: 'center',
+								marginLeft: 16,
+								alignItems: 'center',
+							}}
+							key={`tag-${index}`}
+						>
+							{tag}
+						</Chip>
+					);
+				})}
+			/>
+		</View>
+	);
+};
 
 const AuthButton = ({ onClick, provider, providerLogoSrc }) => {
 	const Icon = () => {
@@ -9,12 +64,12 @@ const AuthButton = ({ onClick, provider, providerLogoSrc }) => {
 				{provider == 'Google' ? (
 					<Image
 						source={require('../../assets/google.png')}
-						style={{ height: 20, width: 20 }}
+						style={{ height: 20, width: 20, marginRight: 10 }}
 					/>
 				) : (
 					<Image
 						source={require('../../assets/microsoft.png')}
-						style={{ height: 20, width: 20 }}
+						style={{ height: 20, width: 20, marginRight: 10 }}
 					/>
 				)}
 			</>
@@ -84,8 +139,8 @@ const styles = StyleSheet.create({
 	signUpCard: {
 		backgroundColor: '#e0e4d6',
 		// flex: 1,
-		width: '85%',
-		height: '90%',
+		width: 350,
+		height: 600,
 		justifyContent: 'center',
 		alignItems: 'center',
 		borderRadius: 8,

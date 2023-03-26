@@ -138,8 +138,8 @@ const styles = StyleSheet.create({
 	},
 	contentContainer: {
 		backgroundColor: '#f5f5f5',
-		width: '80%',
-		height: '60%',
+		width: 350,
+		height: 500,
 		padding: 24,
 		borderRadius: 8,
 	},

@@ -52,13 +52,12 @@ export default function RootApp() {
 			>
 				<Tab.Screen name="Home" component={HomeScreen} />
 				<Tab.Screen name="Create" component={CreateNewGroupScreen} />
+				<Tab.Screen name="My Groups" component={MyGroupsScreen} />
 				<Tab.Screen
 					name="SettingsScr"
 					component={SettingsScreen}
 					options={{ headerShown: false }}
 				/>
-				<Tab.Screen name="Test" component={AuthScreen} />
-				<Tab.Screen name="My Groups" component={MyGroupsScreen} />
 			</Tab.Navigator>
 		</NavigationContainer>
 	);
